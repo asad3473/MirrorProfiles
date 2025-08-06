@@ -2,7 +2,7 @@ import React from 'react'
 
 export default function SideBar() {
     const map=[
-        {icon:}
+      
     ]
     return (
         <div className="sm:w-3/12 rounded-r-[20%] bg-gradient-to-r from-[#208DF8] via-[#2A6EDE] to-[#3058CB]
