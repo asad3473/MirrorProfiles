@@ -13,7 +13,7 @@ const MainLayout = () => {
       </div>
       
       {/* Main content area - flexible */}
-      <div className="w-full overflow-auto">
+      <div className="flex-1 overflow-auto">
         <Outlet />
       </div>
     </div>
@@ -24,10 +24,10 @@ const MainLayout = () => {
 const router = createBrowserRouter([
   {
     path: '/',
-    element: <MainLayout />,
+    element: <MainLayout />, 
     children: [
       {
-        path: '/accounts',
+        path:'', 
         element: <Accounts />
       }
     ]
