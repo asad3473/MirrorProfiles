@@ -6,12 +6,21 @@ import Accounts from './Pages/Acounts';
 
 const MainLayout = () => {
   return (
-    <div className=''>
-      <SideBar />
-      <Outlet />
+    <div className="flex h-screen bg-gray-100">
+      {/* Sidebar - fixed width */}
+      <div className="flex-shrink-0">
+        <SideBar />
+      </div>
+      
+      {/* Main content area - flexible */}
+      <div className="flex-1 overflow-auto">
+        <Outlet />
+      </div>
     </div>
   );
 };
+
+
 const router = createBrowserRouter([
   {
     path: '/',
