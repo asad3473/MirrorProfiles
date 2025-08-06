@@ -43,7 +43,7 @@ export default function AccountHome() {
   });
 
   return (
-    <div className='absolute right-0 top-0 py-4 w-full sm:w-[73%] mx-auto'>
+    <div className='absolute right-0 top-0 py-4 w-full sm:w-[78%] mx-auto'>
       <h1 className='font-bold text-xl sm:text-3xl mb-4'>Accounts</h1>
       <hr className='h-1 w-[96%] text-blue-400' />
       
@@ -70,7 +70,7 @@ export default function AccountHome() {
 
       {/* Filter Section */}
       <div className='mt-3 sm:mt-10 bg-white rounded-md shadow-lg w-full sm:w-[98%] shadow-[#E7F4FF]'>
-        <div className="flex flex-col sm:flex-row items-start sm:items-center gap-3 p-4 bg-white rounded-lg w-full">
+        <div className="flex flex-wrap flex-col sm:flex-row items-start sm:items-center gap-3 p-4 bg-white rounded-lg w-full">
           {/* Search Input */}
           <div className="relative w-full sm:w-auto sm:flex-1 min-w-[200px]">
             <FaSearch className="absolute left-3 top-1/2 transform -translate-y-1/2 text-[#3B82F6]" />
@@ -146,7 +146,7 @@ export default function AccountHome() {
         <div className='sm:mt-4'>
           {filteredAccounts.length > 0 ? (
             filteredAccounts.map(account => (
-              <div key={account.id} className='flex justify-between p-2 hover:bg-[#DBEAFE]'>
+              <div key={account.id} className='flex flex-wrap gap-10 items-center justify-between p-2 hover:bg-[#DBEAFE]'>
                 <div className='flex justify-center items-center gap-3'>
                   <div className='h-14 w-14'>
                     <img src={account.image} alt={account.name} className='h-full w-full rounded-full object-cover' />
