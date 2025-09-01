@@ -32,7 +32,7 @@ export default function SideBar() {
     { icon: <FaSearch />, label: 'Search', to: '/search' },
     { icon: <FaPills />, label: 'Pilling', to: '/pilling' },
     { icon: <FaQuestionCircle />, label: 'FAQs', to: '/faqs' },
-    { icon: <FaFireAlt />, label: 'Warm Up', to: '/warm-up' },
+    { icon: <FaFireAlt />, label: 'Academy', to: '/academy' },
     { icon: <FaCog />, label: 'Settings', to: '/settings' },
   ];
 

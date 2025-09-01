@@ -1,8 +1,9 @@
-import React from 'react';
-import './App.css';
-import { createBrowserRouter, Outlet, RouterProvider } from 'react-router-dom';
-import SideBar from './Pages/SideBar';
-import Accounts from './Pages/Acounts';
+import React from "react";
+import "./App.css";
+import { createBrowserRouter, Outlet, RouterProvider } from "react-router-dom";
+import SideBar from "./Pages/SideBar";
+import Accounts from "./Pages/Acounts";
+import Academy from "./Pages/Academy";
 
 const MainLayout = () => {
   return (
@@ -11,7 +12,7 @@ const MainLayout = () => {
       <div className="flex-shrink-0">
         <SideBar />
       </div>
-      
+
       {/* Main content area - flexible */}
       <div className="flex-1 overflow-auto">
         <Outlet />
@@ -20,18 +21,18 @@ const MainLayout = () => {
   );
 };
 
-
 const router = createBrowserRouter([
   {
-    path: '/',
-    element: <MainLayout />, 
+    path: "/",
+    element: <MainLayout />,
     children: [
       {
-        path:'', 
-        element: <Accounts />
-      }
-    ]
-  }
+        path: "",
+        element: <Accounts />,
+      },
+      {path:"/academy",element:<Academy />}
+    ],
+  },
 ]);
 
 export default function App() {
