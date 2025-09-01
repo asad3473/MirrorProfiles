@@ -3,15 +3,17 @@ import './App.css';
 import { createBrowserRouter, Outlet, RouterProvider } from 'react-router-dom';
 import SideBar from './Pages/SideBar';
 import Accounts from './Pages/Acounts';
+import Billings from './Pages/Billings';
 
 const MainLayout = () => {
+
   return (
     <div className="flex h-screen bg-gray-100">
       {/* Sidebar - fixed width */}
       <div className="flex-shrink-0">
         <SideBar />
       </div>
-      
+
       {/* Main content area - flexible */}
       <div className="w-full overflow-auto">
         <Outlet />
@@ -29,9 +31,14 @@ const router = createBrowserRouter([
       {
         path: '/accounts',
         element: <Accounts />
-      }
+      },
+
     ]
-  }
+  },
+  {
+    path: '/billings',
+    element: <Billings />
+  },
 ]);
 
 export default function App() {
