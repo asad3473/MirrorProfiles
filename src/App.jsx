@@ -14,18 +14,18 @@ const MainLayout = () => {
         <SideBar />
       </div>
 
+
       {/* Main content area - flexible */}
-      <div className="w-full overflow-auto">
+      <div className="flex-1 overflow-auto">
         <Outlet />
       </div>
     </div>
   );
 };
 
-
 const router = createBrowserRouter([
   {
-    path: '/',
+    path: "/",
     element: <MainLayout />,
     children: [
       {

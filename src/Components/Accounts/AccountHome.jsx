@@ -43,7 +43,7 @@ export default function AccountHome() {
   });
 
   return (
-    <div className='absolute right-0 top-0 py-4 w-full sm:w-[78%] mx-auto'>
+    <div className='absolute right-0 top-0 py-4 w-full md:w-[78%] mx-auto'>
       <h1 className='font-bold text-xl sm:text-3xl mb-4'>Accounts</h1>
       <hr className='h-1 w-[96%] text-blue-400' />
       
