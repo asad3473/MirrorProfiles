@@ -9,13 +9,13 @@ import Academy from "./Pages/Academy";
 const MainLayout = () => {
   return (
     <div className="flex h-screen bg-gray-100">
-      {/* Sidebar - fixed width */}
-      <div className="flex-shrink-0">
+      {/* Sidebar - fixed on the left */}
+      <div className="w-64 h-screen fixed left-0 top-0 bg-white shadow-md">
         <SideBar />
       </div>
 
-      {/* Main content area - flexible */}
-      <div className="flex-1 overflow-auto">
+      {/* Main content area with scroll */}
+      <div className="flex-1 ml-64 overflow-y-auto">
         <Outlet />
       </div>
     </div>
@@ -36,9 +36,9 @@ const router = createBrowserRouter([
         element: <Accounts />,
       },
       {
-        path:"/academy",
-        element:<Academy />
-      }
+        path: "/academy",
+        element: <Academy />,
+      },
     ],
   },
   {

@@ -1,7 +1,14 @@
-import React, { useState } from 'react';
+import React, { useState } from "react";
 import { IoLocation } from "react-icons/io5";
-import { FaCalendarAlt, FaChevronDown, FaPlus, FaSearch, FaUserAlt } from "react-icons/fa";
-import { HiRocketLaunch } from 'react-icons/hi2';
+import {
+  FaCalendarAlt,
+  FaChevronDown,
+  FaPlus,
+  FaSearch,
+  FaUserAlt,
+  FaLinkedin,
+} from "react-icons/fa";
+import { TiTick } from "react-icons/ti";
 
 export default function AccountHome() {
   // Sample data for accounts
@@ -11,18 +18,61 @@ export default function AccountHome() {
       name: "Paul Stanton",
       role: "Logistics Manager",
       country: "usa",
-      image: "/accountimage/mathe.jpg",
-      status: "active"
+      location: "New York, NY",
+      image:
+        "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1887&q=80",
+      status: "active",
+      verified: true,
+      company: "Blue Logistics Inc.",
     },
     {
       id: 2,
       name: "Matthew Williamson",
-      role: "Director of Strategic Equipment Solutions",
+      role: "Director of Strategic Equipment",
       country: "usa",
-      image: "/accountimage/wiliam.jpg",
-      status: "active"
+      location: "San Francisco, CA",
+      image:
+        "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80",
+      status: "active",
+      verified: true,
+      company: "Tech Solutions Group",
     },
-    // Add more accounts as needed
+    {
+      id: 3,
+      name: "Sarah Johnson",
+      role: "Senior Marketing Executive",
+      country: "uk",
+      location: "London, UK",
+      image:
+        "https://images.unsplash.com/photo-1494790108377-be9c29b29330?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1887&q=80",
+      status: "pending",
+      verified: false,
+      company: "Global Marketing Partners",
+    },
+    {
+      id: 4,
+      name: "Michael Chen",
+      role: "Software Engineering Lead",
+      country: "canada",
+      location: "Toronto, Canada",
+      image:
+        "https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1887&q=80",
+      status: "active",
+      verified: true,
+      company: "Tech Innovations Inc.",
+    },
+    {
+      id: 5,
+      name: "Emma Rodriguez",
+      role: "Financial Analyst",
+      country: "australia",
+      location: "Sydney, Australia",
+      image:
+        "https://images.unsplash.com/photo-1487412720507-e7ab37603c6f?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2071&q=80",
+      status: "inactive",
+      verified: true,
+      company: "Global Finance Corp",
+    },
   ]);
 
   // Filter states
@@ -33,155 +83,174 @@ export default function AccountHome() {
   const [dateFilter, setDateFilter] = useState("");
 
   // Filter function
-  const filteredAccounts = accounts.filter(account => {
+  const filteredAccounts = accounts.filter((account) => {
     return (
       account.name.toLowerCase().includes(searchTerm.toLowerCase()) &&
-      (countryFilter === "" || account.country === countryFilter.toLowerCase()) &&
+      (countryFilter === "" ||
+        account.country === countryFilter.toLowerCase()) &&
       (statusFilter === "" || account.status === statusFilter.toLowerCase())
-      // Add other filter conditions as needed
     );
   });
 
   return (
-    <div className='absolute right-0 top-0 py-4 w-full md:w-[78%] mx-auto'>
-      <h1 className='font-bold text-xl sm:text-3xl mb-4'>Accounts</h1>
-      <hr className='h-1 w-[96%] text-blue-400' />
-      
-      {/* Stats Section */}
-      <div className='bg-white rounded-md flex flex-col sm:flex-row justify-between items-center p-4 mt-4 shadow-lg sm:w-[96%] shadow-[#E7F4FF]'>
-        <div className='bg-[#DBEAFE] p-2 rounded-md flex flex-wrap justify-around w-full sm:w-4/12 mb-2 sm:mb-0'>
-          <p className='flex gap-2 items-center'>
-            <FaUserAlt className='text-lg' />
-            <span className='text-lg'>{accounts.length}</span>
-          </p>
-          <p className='flex gap-2 items-center'>
-            <img src="/accountimage/icon.png" alt="" />
-            <span className='text-lg'>0</span>
-          </p>
-          <p className='flex gap-2 items-center'>
-            <img src="/accountimage/usa.png" alt="" />
-            <span className='text-lg'>0</span>
-          </p>
-        </div>
-        <div className='bg-gradient-to-r from-[#208DF8] via-[#2A6EDE] to-[#3058CB] py-2 w-full sm:w-[30%] text-white flex justify-center items-center font-bold rounded-3xl cursor-pointer hover:opacity-90 transition-opacity'>
-          <span className='uppercase text-sm sm:text-lg'>+ Get new Accounts</span>
-        </div>
-      </div>
+    <div className="absolute right-0 top-0 py-4 w-full md:w-[78%] mx-auto bg-gray-50 min-h-screen">
+      <div className="px-4 sm:px-6">
+        <h1 className="font-bold text-xl sm:text-3xl mb-4 text-gray-800">
+          Browse Verified LinkedIn Accounts
+        </h1>
+        <hr className="h-1 w-full text-blue-400 mb-6" />
 
-      {/* Filter Section */}
-      <div className='mt-3 sm:mt-10 bg-white rounded-md shadow-lg w-full sm:w-[98%] shadow-[#E7F4FF]'>
-        <div className="flex flex-wrap flex-col sm:flex-row items-start sm:items-center gap-3 p-4 bg-white rounded-lg w-full">
-          {/* Search Input */}
-          <div className="relative w-full sm:w-auto sm:flex-1 min-w-[200px]">
-            <FaSearch className="absolute left-3 top-1/2 transform -translate-y-1/2 text-[#3B82F6]" />
-            <input
-              type="text"
-              placeholder="Search..."
-              value={searchTerm}
-              onChange={(e) => setSearchTerm(e.target.value)}
-              className="w-full pl-10 pr-4 py-2 border border-[#3B82F6] rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 text-[#3B82F6] placeholder-[#3B82F6]/50"
-            />
-          </div>
+        {/* Filter Section */}
+        <div className="bg-white rounded-md shadow-lg w-full shadow-gray-200 mb-8">
+          <div className="flex flex-wrap flex-col sm:flex-row items-start sm:items-center gap-3 p-4 bg-white rounded-lg w-full">
+            {/* Search Input */}
+            <div className="relative w-full sm:w-auto sm:flex-1 min-w-[200px]">
+              <FaSearch className="absolute left-3 top-1/2 transform -translate-y-1/2 text-blue-500" />
+              <input
+                type="text"
+                placeholder="Search by name..."
+                value={searchTerm}
+                onChange={(e) => setSearchTerm(e.target.value)}
+                className="w-full pl-10 pr-4 py-2 border border-blue-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 text-gray-700 placeholder-gray-400"
+              />
+            </div>
 
-          {/* Country Dropdown */}
-          <div className="relative w-full sm:w-auto sm:flex-1 min-w-[150px]">
-            <IoLocation className="absolute left-3 top-1/2 transform -translate-y-1/2 text-[#3B82F6]" />
-            <select 
-              value={countryFilter}
-              onChange={(e) => setCountryFilter(e.target.value)}
-              className="w-full appearance-none pl-10 pr-8 py-2 border border-[#3B82F6] rounded-md focus:outline-none focus:ring-2 text-[#3B82F6] focus:ring-blue-500 bg-white"
+            {/* Country Dropdown */}
+            <div className="relative w-full sm:w-auto sm:flex-1 min-w-[150px]">
+              <IoLocation className="absolute left-3 top-1/2 transform -translate-y-1/2 text-blue-500" />
+              <select
+                value={countryFilter}
+                onChange={(e) => setCountryFilter(e.target.value)}
+                className="w-full appearance-none pl-10 pr-8 py-2 border border-blue-300 rounded-md focus:outline-none focus:ring-2 text-gray-700 focus:ring-blue-500 bg-white"
+              >
+                <option value="">All Countries</option>
+                <option value="usa">USA</option>
+                <option value="canada">Canada</option>
+                <option value="uk">UK</option>
+                <option value="australia">Australia</option>
+              </select>
+              <FaChevronDown className="absolute right-3 top-1/2 transform -translate-y-1/2 text-blue-500 pointer-events-none" />
+            </div>
+
+            {/* Status Filter */}
+            <div className="relative w-full sm:w-auto sm:flex-1 min-w-[180px]">
+              <select
+                value={statusFilter}
+                onChange={(e) => setStatusFilter(e.target.value)}
+                className="w-full appearance-none pl-3 pr-8 py-2 border border-blue-300 rounded-md focus:outline-none text-gray-700 focus:ring-2 focus:ring-blue-500 bg-white"
+              >
+                <option value="">All Status</option>
+                <option value="active">Active</option>
+                <option value="inactive">Inactive</option>
+                <option value="pending">Pending</option>
+              </select>
+              <FaChevronDown className="absolute right-3 top-1/2 transform -translate-y-1/2 text-blue-500 pointer-events-none" />
+            </div>
+
+            {/* Reset Filters Button */}
+            <button
+              onClick={() => {
+                setSearchTerm("");
+                setCountryFilter("");
+                setStatusFilter("");
+                setDateFilter("");
+              }}
+              className="w-full sm:w-auto px-4 py-2 bg-gray-200 text-gray-700 rounded-md hover:bg-gray-300 transition-colors"
             >
-              <option value="">All Countries</option>
-              <option value="usa">USA</option>
-              <option value="canada">Canada</option>
-              <option value="uk">UK</option>
-              <option value="australia">Australia</option>
-            </select>
-            <FaChevronDown className="absolute right-3 top-1/2 transform -translate-y-1/2 text-[#3B82F6] pointer-events-none" />
-          </div>
-
-          {/* Gender Filter */}
-          <div className="relative w-full sm:w-auto sm:flex-1 min-w-[120px]">
-            <FaUserAlt className="absolute left-3 top-1/2 transform -translate-y-1/2 text-[#3B82F6]" />
-            <select 
-              value={genderFilter}
-              onChange={(e) => setGenderFilter(e.target.value)}
-              className="w-full appearance-none pl-10 pr-8 py-2 border border-[#3B82F6] rounded-md focus:outline-none focus:ring-2 text-[#3B82F6] focus:ring-blue-500 bg-white"
-            >
-              <option value="">All Genders</option>
-              <option value="male">Male</option>
-              <option value="female">Female</option>
-            </select>
-            <FaChevronDown className="absolute right-3 top-1/2 transform -translate-y-1/2 text-[#3B82F6] pointer-events-none" />
-          </div>
-
-          {/* Status Filter */}
-          <div className="relative w-full sm:w-auto sm:flex-1 min-w-[180px]">
-            <select 
-              value={statusFilter}
-              onChange={(e) => setStatusFilter(e.target.value)}
-              className="w-full appearance-none pl-3 pr-8 py-2 border border-[#3B82F6] rounded-md focus:outline-none text-[#3B82F6] focus:ring-2 focus:ring-blue-500 bg-white"
-            >
-              <option value="">All Status</option>
-              <option value="active">Active</option>
-              <option value="inactive">Inactive</option>
-              <option value="pending">Pending</option>
-            </select>
-            <FaChevronDown className="absolute right-3 top-1/2 transform -translate-y-1/2 text-[#3B82F6] pointer-events-none" />
-          </div>
-
-          {/* Date Input */}
-          <div className="relative w-full sm:w-auto">
-            <FaCalendarAlt className="absolute left-3 top-1/2 transform -translate-y-1/2 text-[#3B82F6]" />
-            <input
-              type="date"
-              value={dateFilter}
-              onChange={(e) => setDateFilter(e.target.value)}
-              className="w-full pl-10 pr-4 py-2 text-[#3B82F6] border border-[#3B82F6] rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 bg-white"
-            />
+              Reset Filters
+            </button>
           </div>
         </div>
 
-        {/* Accounts List */}
-        <div className='sm:mt-4'>
-          {filteredAccounts.length > 0 ? (
-            filteredAccounts.map(account => (
-              <div key={account.id} className='flex flex-wrap gap-10 items-center justify-between p-2 hover:bg-[#DBEAFE]'>
-                <div className='flex justify-center items-center gap-3'>
-                  <div className='h-14 w-14'>
-                    <img src={account.image} alt={account.name} className='h-full w-full rounded-full object-cover' />
-                  </div>
-                  <div className='flex flex-col'>
-                    <p className='font-medium'>{account.name}</p>
-                    <div className='flex gap-2 items-center'>
-                      <p className='text-gray-400 text-sm'>{account.role}</p>
-                      <img 
-                        src={`/accountimage/${account.country}.png`} 
-                        alt={account.country} 
-                        className='h-5 w-5 rounded-full object-cover'
-                      />
-                    </div>
-                  </div>
-                </div>
-                <div className='flex items-center gap-3'>
-                  <div className='border border-[#3B82F6] rounded-3xl px-3 py-2 cursor-pointer hover:bg-[#3B82F6] hover:text-white transition-colors'>
-                    <p className='flex items-center gap-2 text-[#3B82F6] hover:text-white justify-center'>
-                      <HiRocketLaunch />
-                      <span className='text-sm sm:text-base'>LAUNCH SESSION</span>
-                    </p>
-                  </div>
-                  <div className='p-2 rounded-full bg-gradient-to-r from-[#208DF8] via-[#2A6EDE] to-[#3058CB] cursor-pointer hover:opacity-80 transition-opacity'>
-                    <FaPlus className='text-white'/>
+        {/* Profile Cards Grid */}
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+          {filteredAccounts.map((account) => (
+            <div
+              key={account.id}
+              className="bg-white rounded-xl shadow-md overflow-hidden border border-gray-100 hover:shadow-lg transition-shadow"
+            >
+              {/* Profile Header with Image */}
+              <div className="relative">
+                <div className="h-32 bg-gradient-to-r from-blue-500 to-indigo-600"></div>
+                <div className="absolute -bottom-12 left-6">
+                  <div className="relative">
+                    <img
+                      src={account.image}
+                      alt={account.name}
+                      className="w-24 h-24 rounded-full border-4 border-white object-cover shadow-md"
+                    />
+                    {account.verified && (
+                      <div className="absolute bottom-0 right-0 bg-white rounded-full p-1">
+                        <TiTick className="text-blue-600 text-lg" />
+                      </div>
+                    )}
                   </div>
                 </div>
               </div>
-            ))
-          ) : (
-            <div className='p-4 text-center text-gray-500'>
-              No accounts found matching your filters
+
+              {/* Profile Content */}
+              <div className="pt-14 px-6 pb-6">
+                <div className="flex justify-between items-start mb-4">
+                  <div>
+                    <h2 className="font-bold text-xl text-gray-800">
+                      {account.name}
+                    </h2>
+                    <p className="text-gray-600 text-sm">{account.role}</p>
+                  </div>
+                  <div className="bg-blue-100 p-2 rounded-full">
+                    <FaLinkedin className="text-blue-600" />
+                  </div>
+                </div>
+
+                <div className="mb-4">
+                  <div className="flex items-center text-gray-600 mb-1">
+                    <IoLocation className="text-blue-500 mr-2" />
+                    <span>{account.location}</span>
+                  </div>
+                  <p className="text-sm text-gray-500">{account.company}</p>
+                </div>
+
+                <div className="flex justify-between items-center mb-4">
+                  <span
+                    className={`px-3 py-1 rounded-full text-xs font-medium ${
+                      account.status === "active"
+                        ? "bg-green-100 text-green-800"
+                        : account.status === "inactive"
+                        ? "bg-red-100 text-red-800"
+                        : "bg-yellow-100 text-yellow-800"
+                    }`}
+                  >
+                    {account.status.charAt(0).toUpperCase() +
+                      account.status.slice(1)}
+                  </span>
+                  <span className="text-xs text-gray-500">
+                    ID: {account.id}
+                  </span>
+                </div>
+
+                <button className="w-full bg-blue-600 hover:bg-blue-700 text-white font-medium py-2 px-4 rounded-lg transition-colors flex items-center justify-center mt-auto">
+                  <FaPlus className="mr-2" />
+                  Connect
+                </button>
+              </div>
             </div>
-          )}
+          ))}
         </div>
+
+        {/* Empty State */}
+        {filteredAccounts.length === 0 && (
+          <div className="text-center py-12">
+            <div className="mx-auto w-24 h-24 bg-gray-200 rounded-full flex items-center justify-center mb-4">
+              <FaSearch className="text-3xl text-gray-400" />
+            </div>
+            <h3 className="text-xl font-medium text-gray-700 mb-2">
+              No profiles found
+            </h3>
+            <p className="text-gray-500">
+              Try adjusting your search or filter parameters
+            </p>
+          </div>
+        )}
       </div>
     </div>
   );
