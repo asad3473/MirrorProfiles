@@ -30,7 +30,8 @@ export default function SideBar() {
 
   const menu = [
     { icon: <FaSearch />, label: 'Search', to: '/search' },
-    { icon: <FaPills />, label: 'Pilling', to: '/pilling' },
+    { icon: <FaPills />, label: 'Accounts', to: '/accounts' },
+    { icon: <FaPills />, label: 'Billing', to: '/billings' },
     { icon: <FaQuestionCircle />, label: 'FAQs', to: '/faqs' },
     { icon: <FaFireAlt />, label: 'Academy', to: '/academy' },
     { icon: <FaCog />, label: 'Settings', to: '/settings' },
