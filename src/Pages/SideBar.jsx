@@ -111,17 +111,17 @@ export default function SideBar() {
 
       {/* Sidebar */}
       <div
-        className={`fixed top-0 h-screen bg-black text-white shadow-lg z-40 transition-all duration-300 ease-in-out ${sidebarWidth} ${sidebarPosition} lg:relative lg:left-0 lg:flex`}
+        className={`fixed top-0 h-screen bg-white text-black shadow-lg z-40 transition-all duration-300 ease-in-out ${sidebarWidth} ${sidebarPosition} lg:relative lg:left-0 lg:flex`}
       >
-        <div className="flex flex-col justify-between h-full w-full backdrop-blur bg-opacity-90 bg-black">
+        <div className="flex flex-col justify-between h-full w-full backdrop-blur bg-opacity-90 bg-white text-black">
           {/* Top Section (Logo + Collapse) */}
           <div className="pt-2">
             {/* Logo */}
-            <div className="flex justify-center items-center py-4 border-b border-gray-700">
+            <div className="flex justify-center items-center py-4 border-b bg-black border-gray-700">
               <img
                 src="/accountimage/logo.png"
                 alt="Logo"
-                className={`transition-all duration-300 ${isCollapsed && isDesktop ? 'h-6' : 'h-10'}`}
+                className={`transition-all duration-300 text-black ${isCollapsed && isDesktop ? 'h-6' : 'h-10'}`}
               />
             </div>
 
@@ -130,7 +130,7 @@ export default function SideBar() {
               <div className="flex justify-end px-4 pt-1 pb-1">
                 <button
                   onClick={toggleSidebar}
-                  className="text-gray-300 hover:text-white transition p-2 rounded-full hover:bg-gray-800"
+                  className="text-black transition p-2 rounded-full hover:bg-gray-800"
                   aria-label={isCollapsed ? 'Expand sidebar' : 'Collapse sidebar'}
                 >
                   {isCollapsed ? <FaChevronRight /> : <FaChevronLeft />}
@@ -149,16 +149,16 @@ export default function SideBar() {
                   className={({ isActive }) =>
                     `flex items-center p-3 rounded-md cursor-pointer group transition-all ${
                       isCollapsed && isDesktop ? 'justify-center' : ''
-                    } ${isActive ? 'bg-gray-800' : 'hover:bg-gray-800'}`
+                    } ${isActive ? 'bg-gray-800 text-white' : 'hover:bg-gray-800 hover:text-white'}`
                   }
                   title={isCollapsed && isDesktop ? item.label : ''}
                   aria-label={item.label}
                 >
-                  <span className="text-xl text-gray-300 group-hover:text-white">
+                  <span className="text-xl text-black group-hover:text-white">
                     {item.icon}
                   </span>
                   {(!isCollapsed || !isDesktop) && (
-                    <span className="ml-4 text-base text-gray-300 group-hover:text-white">
+                    <span className="ml-4 text-base text-black group-hover:text-white">
                       {item.label}
                     </span>
                   )}
@@ -176,9 +176,9 @@ export default function SideBar() {
                 aria-label={`Change language (current: ${languages[language].name})`}
               >
                 <div className="flex items-center">
-                  <FaGlobe className="text-gray-300 mr-3 text-lg" />
+                  <FaGlobe className="text-black mr-3 text-lg" />
                   {(!isCollapsed || !isDesktop) && (
-                    <span className="text-gray-300 text-sm">
+                    <span className="text-black text-sm">
                       {languages[language].name}
                     </span>
                   )}

@@ -171,7 +171,7 @@ export default function AccountHome() {
             >
               {/* Profile Header with Image */}
               <div className="relative">
-                <div className="h-32 bg-gradient-to-r from-blue-500 to-indigo-600"></div>
+                <div className="h-32 bg-gradient-to-r from-[#6EA9EB] to-[#C589F1]"></div>
                 <div className="absolute -bottom-12 left-6">
                   <div className="relative">
                     <img
@@ -228,7 +228,7 @@ export default function AccountHome() {
                   </span>
                 </div>
 
-                <button className="w-full bg-blue-600 hover:bg-blue-700 text-white font-medium py-2 px-4 rounded-lg transition-colors flex items-center justify-center mt-auto">
+                <button className="w-full bg-gradient-to-r from-[#6EA9EB] to-[#C589F1] hover:bg-blue-700 text-white font-medium py-2 px-4 rounded-lg transition-colors flex items-center justify-center mt-auto">
                   <FaPlus className="mr-2" />
                   Connect
                 </button>
