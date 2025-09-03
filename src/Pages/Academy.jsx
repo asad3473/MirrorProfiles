@@ -56,7 +56,7 @@ const Academy = () => {
           </svg>
         </div>
         <h1 className="text-3xl md:text-4xl font-bold text-gray-900 mb-3">LinkedIn Mastery Academy</h1>
-        <div className="w-32 h-1.5 bg-gradient-to-r from-blue-500 to-indigo-600 mx-auto mb-3 rounded-full"></div>
+        <div className="w-32 h-1.5 bg-gradient-to-r from-[#6EA9EB] to-[#C589F1] mx-auto mb-3 rounded-full"></div>
         <p className="text-md text-gray-700 max-w-3xl mx-auto leading-relaxed">
           Elevate your professional outreach with expert-led training programs. Our academy, led by Frédéric—co-founder and LinkedIn strategist with over 6 years of specialized experience—provides the comprehensive knowledge needed to master LinkedIn prospecting and maximize your MirrorProfiles investment.
         </p>
@@ -72,14 +72,14 @@ const Academy = () => {
                 alt={course.title}
                 className="w-full h-full object-cover transition-transform duration-500 hover:scale-110"
               />
-              <div className="absolute top-4 left-4 bg-blue-600 text-white text-xs font-semibold px-3 py-1 rounded-full">
+              <div className="absolute top-4 left-4 bg-gradient-to-r from-[#6EA9EB] to-[#C589F1] text-white text-xs font-semibold px-3 py-1 rounded-full">
                 Course {course.id}
               </div>
             </div>
             <div className="p-6 flex flex-col flex-grow">
               <h3 className="text-xl font-bold text-gray-900 mb-3">{course.title}</h3>
               <p className="text-gray-600 mb-6 flex-grow" >{course.description}</p>
-              <button className="group bg-gradient-to-r from-blue-600 to-indigo-700 hover:from-blue-700 hover:to-indigo-800 text-white font-medium py-3 px-6 rounded-lg transition-all duration-300 transform hover:-translate-y-0.5 self-start flex items-center">
+              <button className="group bg-gradient-to-r from-[#6EA9EB] to-[#C589F1] hover:from-blue-700 hover:to-indigo-800 text-white font-medium py-3 px-6 rounded-lg transition-all duration-300 transform hover:-translate-y-0.5 self-start flex items-center">
                 {course.cta}
                 <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5 ml-2 group-hover:translate-x-1 transition-transform" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M14 5l7 7m0 0l-7 7m7-7H3" />
@@ -91,7 +91,7 @@ const Academy = () => {
       </div>
 
       {/* Call to Action */}
-      <div className="bg-gradient-to-r from-blue-600 to-indigo-700 rounded-2xl p-10 text-center mt-8 mb-8 relative overflow-hidden">
+      <div className="bg-gradient-to-r from-[#6EA9EB] to-[#C589F1] rounded-2xl p-10 text-center mt-8 mb-8 relative overflow-hidden">
         <div className="absolute -top-10 -right-10 w-32 h-32 rounded-full bg-white opacity-10"></div>
         <div className="absolute -bottom-8 -left-8 w-24 h-24 rounded-full bg-white opacity-10"></div>
         
@@ -117,7 +117,7 @@ const Academy = () => {
                 alt="Frédéric - Co-founder" 
                 className="w-48 h-48 rounded-full object-cover border-4 border-gray-100 shadow-lg"
               />
-              <div className="absolute bottom-0 right-0 bg-blue-600 text-white text-xs font-bold px-3 py-1 rounded-full">
+              <div className="absolute bottom-0 right-0 bg-gradient-to-r from-[#6EA9EB] to-[#C589F1] text-white text-xs font-bold px-3 py-1 rounded-full">
                 Instructor
               </div>
             </div>
