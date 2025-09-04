@@ -5,8 +5,8 @@ import { GiStripedSun } from "react-icons/gi";
 import CardData from './CardData';
 export default function BillingHeader() {
     return (
-        <div className=' flex flex-wrap' >
-            <div
+        <div className=' bg-white' >
+            {/* <div
                 className="relative px-3 text-white sm:px-10 bg-[#000000] h-auto sm:py-5 w-full sm:w-5/12 flex flex-col justify-between"
                 style={{
                     backgroundImage: `
@@ -50,11 +50,11 @@ export default function BillingHeader() {
                         <GiStripedSun className="text-[#e9f4f82d]" fontSize={80} />
                     </div>
                 </div>
-            </div>
+            </div> */}
 
 
             {/* right side card data */}
-            <div className='w-full sm:w-7/12'>
+            <div className='w-full '>
                 <CardData />
             </div>
         </div >

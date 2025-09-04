@@ -20,7 +20,7 @@ export default function SideBar() {
   const [windowWidth, setWindowWidth] = useState(
     typeof window !== 'undefined' ? window.innerWidth : 1024
   );
-  
+
   const [language, setLanguage] = useState(() => {
     if (typeof window !== 'undefined') {
       return localStorage.getItem('appLanguage') || 'en';
@@ -38,15 +38,15 @@ export default function SideBar() {
   ];
 
   const languages = {
-    en: { 
-      code: 'en', 
-      name: 'English', 
-      icon: <FaFlagUsa className="text-blue-600" /> 
+    en: {
+      code: 'en',
+      name: 'English',
+      icon: <FaFlagUsa className="text-black group-hover:text-white" />
     },
-    fr: { 
-      code: 'fr', 
-      name: 'Français', 
-      icon: <FaFlag className="text-green-600" /> 
+    fr: {
+      code: 'fr',
+      name: 'Français',
+      icon: <FaFlag className="text-green-600" />
     },
   };
 
@@ -67,7 +67,7 @@ export default function SideBar() {
 
   const toggleSidebar = () => setIsCollapsed(!isCollapsed);
   const toggleMobileMenu = () => setIsMobileOpen(!isMobileOpen);
-  
+
   const toggleLanguage = () => {
     const languageCodes = Object.keys(languages);
     const currentIndex = languageCodes.indexOf(language);
@@ -91,8 +91,8 @@ export default function SideBar() {
   const sidebarPosition = isDesktop
     ? 'left-0'
     : isMobileOpen
-    ? 'left-0'
-    : '-left-full';
+      ? 'left-0'
+      : '-left-full';
 
   return (
     <>
@@ -147,18 +147,17 @@ export default function SideBar() {
                   key={index}
                   to={item.to}
                   className={({ isActive }) =>
-                    `flex items-center p-3 rounded-md cursor-pointer group transition-all ${
-                      isCollapsed && isDesktop ? 'justify-center' : ''
-                    } ${isActive ? 'bg-gray-800 text-white' : 'hover:bg-gray-800 hover:text-white'}`
+                    `flex items-center p-3 gap-3 rounded-md cursor-pointer group transition-all ${isCollapsed && isDesktop ? 'justify-center' : ''
+                    } ${isActive ? 'bg-gradient-to-r from-[#6EA9EB] to-[#C589F1] text-white' : ' hover:bg-gradient-to-r from-[#6EA9EB] to-[#C589F1] hover:text-white'}`
                   }
                   title={isCollapsed && isDesktop ? item.label : ''}
                   aria-label={item.label}
                 >
-                  <span className="text-xl text-black group-hover:text-white">
+                  <span className={({ isActive }) => `${isActive ? 'text-white' : 'text-black'} text-xl text-black group-hover:text-white`}>
                     {item.icon}
                   </span>
                   {(!isCollapsed || !isDesktop) && (
-                    <span className="ml-4 text-base text-black group-hover:text-white">
+                    <span className={({ isActive }) => `${isActive ? 'text-white' : 'text-black '} ml-4 text-base text-black `}>
                       {item.label}
                     </span>
                   )}
@@ -170,20 +169,19 @@ export default function SideBar() {
             <div className="px-2 pb-4">
               <button
                 onClick={toggleLanguage}
-                className={`flex items-center w-full p-3 rounded-md hover:bg-gray-800 transition ${
-                  isCollapsed && isDesktop ? 'justify-center' : 'justify-between'
-                }`}
+                className={`flex items-center group w-full p-3 hover:text-white rounded-md hover:bg-gradient-to-r from-[#6EA9EB] to-[#C589F1] transition ${isCollapsed && isDesktop ? 'justify-center' : 'justify-between'
+                  }`}
                 aria-label={`Change language (current: ${languages[language].name})`}
               >
                 <div className="flex items-center">
-                  <FaGlobe className="text-black mr-3 text-lg" />
+                  <FaGlobe className="text-black group-hover:text-white mr-3 text-lg" />
                   {(!isCollapsed || !isDesktop) && (
-                    <span className="text-black text-sm">
+                    <span className="text-black text-sm group-hover:text-white">
                       {languages[language].name}
                     </span>
                   )}
                 </div>
-                <span className="text-xl">
+                <span className="text-xl group-hover:text-white">
                   {languages[language].icon}
                 </span>
               </button>

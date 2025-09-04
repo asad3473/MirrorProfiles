@@ -25,10 +25,10 @@ export default function CardData() {
         Setclose(!open)
     }
     return (
-        <div className=' px-2 py-5'>
-            <div className=' w-full sm:w-11/12 mx-auto '>
+        <div className=' px-2 py-5 bg-white'>
+            <div className=' w-full  '>
                 <h1 className=' sm:text-2xl font-semibold mb-3'>Payment method</h1>
-                <hr className=' h-1 bg-[#0f292739] border-0' />
+                <hr className=' h-1 bg-gradient-to-r from-[#6EA9EB] to-[#C589F1] border-0' />
 
                 <div className=' flex justify-between items-center mt-6'>
                     <div className=' text-nowrap flex items-center gap-2 sm:w-4/12 w-full'>
@@ -36,7 +36,7 @@ export default function CardData() {
                         <span>Mastercard •••• 3567</span>
                     </div>
                     <div className=' flex  w-full sm:w-4/12 items-center justify-around'>
-                        <p className=' text-gray-500 flex gap-1 items-center'><FaArrowCircleLeft className='20' /> link</p>
+                        <p className=' text-gray-500  flex gap-1 items-center'><FaArrowCircleLeft className='20 text-[#C589F1]' /> link</p>
                         <div className=' relative hover:shadow-[#b9b9b9] shadow shadow-[#d4cbcb4a] border py-1 border-[#d4cbcb4a] px-2'>
                             <BsThreeDots onClick={Box} />
                             {
@@ -57,7 +57,7 @@ export default function CardData() {
                 </div>
 
                 <h1 className=' mt-5 sm:text-xl  mb-3'>Billing information</h1>
-                <hr className=' h-1 bg-[#0f292739] border-0' />
+                <hr className=' h-1 bg-gradient-to-r from-[#6EA9EB] to-[#C589F1] border-0' />
 
                 <div className=' mt-2'>
                     <div className=' flex gap-24 mt-3'>
@@ -86,13 +86,13 @@ export default function CardData() {
                             type="text"
                             value={searchTerm}
                             onChange={(e) => setSearchTerm(e.target.value)}
-                            className='shadow outline-0  py-2 border border-[#313a3a44] px-2 rounded-md'
+                            className='shadow outline-0  py-2 border border-[#C589F1] px-2 rounded-md'
                             placeholder='filter invoices'
                         />
                         <span className='py-2 px-2 shadow'><FaSearch /></span>
                     </span>
                 </div>
-                <hr className=' h-1 bg-[#0f292739] border-0' />
+                <hr className=' bg-gradient-to-r from-[#6EA9EB] to-[#C589F1] h-1 border-0' />
 
                 <div className=' w-full mt-3'>
                     {
@@ -100,7 +100,7 @@ export default function CardData() {
                             <div className=' flex justify-between gap-2 items-center mb-2 w-full' key={index}>
                                 <span>{val.date}</span>
                                 <span>{val.price}</span>
-                                <button className=' py-1 px-2 text-center rounded-md bg-[#72918e4c]'>{val.stats}</button>
+                                <button className=' bg-gradient-to-r text-white from-[#6EA9EB] to-[#C589F1] py-1 px-2 text-center rounded-md bg-[#72918e4c]'>{val.stats}</button>
                                 <span>{val.web}</span>
                             </div>
                         ))

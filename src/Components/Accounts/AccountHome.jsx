@@ -155,7 +155,7 @@ export default function AccountHome() {
                 setStatusFilter("");
                 setDateFilter("");
               }}
-              className="w-full sm:w-auto px-4 py-2 bg-gray-200 text-gray-700 rounded-md hover:bg-gray-300 transition-colors"
+              className="w-full sm:w-auto px-4 py-2 text-white bg-gradient-to-r from-[#6EA9EB] to-[#C589F1] hover:bg-[#C589F1] rounded-md transition-colors"
             >
               Reset Filters
             </button>
