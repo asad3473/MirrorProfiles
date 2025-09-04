@@ -39,7 +39,7 @@ export default function MainLayout() {
 
       {/* Sidebar */}
       <aside
-        className={`fixed top-0 left-0 z-40 w-[20%] h-screen bg-white shadow-md transition-transform duration-300 
+        className={`fixed top-0 left-0 z-40 w-64 lg:w-[20%] h-screen bg-white shadow-md transition-transform duration-300 
         ${isSidebarOpen ? "translate-x-0" : "-translate-x-full"} lg:translate-x-0`}
       >
         <div className="h-full overflow-y-auto">
