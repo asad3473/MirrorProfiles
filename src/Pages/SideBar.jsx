@@ -37,40 +37,42 @@ export default function SideBar({ isMobile, onClose }) {
   };
 
   return (
-    <div className="flex flex-col justify-between h-full">
-      {/* Header */}
-      <div className="flex items-center justify-between px-6 py-4 border-b">
-        <div className="flex items-center gap-2">
-          <div className="text-purple-600 text-2xl font-bold">P</div>
-          <span className="text-lg font-semibold">ProfilePartner</span>
+    <div className="flex justify-between flex-col h-full">
+      <div>
+        {/* Header */}
+        <div className="flex items-center justify-between px-6 py-4 border-b">
+          <div className="flex items-center gap-2">
+            <div className="text-purple-600 text-2xl font-bold">P</div>
+            <span className="text-lg font-semibold">ProfilePartner</span>
+          </div>
+          {isMobile && (
+            <button onClick={onClose} className="text-gray-700">
+              <FaTimes size={22} />
+            </button>
+          )}
         </div>
-        {isMobile && (
-          <button onClick={onClose} className="text-gray-700">
-            <FaTimes size={22} />
-          </button>
-        )}
-      </div>
 
-      {/* Navigation */}
-      <nav className="mt-4">
-        {mainMenu.map((item, index) => (
-          <NavLink
-            key={index}
-            to={item.to}
-            onClick={handleClick}
-            className={({ isActive }) =>
-              `flex items-center gap-3 mx-4 px-6 py-2 rounded-md transition ${
-                isActive
-                  ? "bg-gradient-to-r from-[#6EA9EB] to-[#C589F1] text-white font-medium"
-                  : "text-gray-700 hover:bg-gradient-to-r from-[#6EA9EB] to-[#C589F1] hover:text-white"
-              }`
-            }
-          >
-            <span className="text-md">{item.icon}</span>
-            <span>{item.label}</span>
-          </NavLink>
-        ))}
-      </nav>
+        {/* Navigation */}
+        <nav className="mt-4">
+          {mainMenu.map((item, index) => (
+            <NavLink
+              key={index}
+              to={item.to}
+              onClick={handleClick}
+              className={({ isActive }) =>
+                `flex items-center gap-3 mx-4 px-6 py-2 rounded-md transition ${
+                  isActive
+                    ? "bg-gradient-to-r from-[#6EA9EB] to-[#C589F1] text-white font-medium"
+                    : "text-gray-700 hover:bg-gradient-to-r from-[#6EA9EB] to-[#C589F1] hover:text-white"
+                }`
+              }
+            >
+              <span className="text-md">{item.icon}</span>
+              <span>{item.label}</span>
+            </NavLink>
+          ))}
+        </nav>
+      </div>
 
       {/* Filters */}
       <div className="border-t py-4">
