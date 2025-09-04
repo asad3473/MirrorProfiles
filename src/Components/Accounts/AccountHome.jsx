@@ -1,14 +1,9 @@
 import React, { useState } from "react";
 import { IoLocation } from "react-icons/io5";
 import {
-  FaCalendarAlt,
   FaChevronDown,
-  FaPlus,
   FaSearch,
-  FaUserAlt,
-  FaLinkedin,
   FaUser,
-  FaArrowDown,
   FaCaretDown,
   FaCircle,
 } from "react-icons/fa";
@@ -19,53 +14,74 @@ import { TiTick } from "react-icons/ti";
 
 export default function AccountHome() {
   // Sample data for accounts
-  const [accounts, setAccounts] = useState([
+  const [accounts] = useState([
     {
       id: 1,
       name: "Paul Stanton",
       role: "Logistics Manager",
       country: "usa",
       location: "New York, NY",
+      timezone: "est",
       image:
-        "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1887&q=80",
+        "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=1887&q=80",
       status: "active",
       verified: true,
-      heart: <CiHeart />, safe: 'Safe touse', tick: <TiTick />, plus: ' + safet..sav', shield: <GoShieldCheck />,
-      company: "Blue Logistics Inc."
+      heart: <CiHeart />,
+      safe: "Safe to use",
+      tick: <TiTick />,
+      plus: " + safet..sav",
+      shield: <GoShieldCheck />,
+      company: "Blue Logistics Inc.",
     },
     {
       id: 2,
-      tick: <TiTick />, safe: 'Safe touse', warm: 'Under warmup', arow: <FaArrowDown19 />, shield: <GoShieldCheck />, year: '3-year',
+      tick: <TiTick />,
+      safe: "Safe to use",
+      warm: "Under warmup",
+      arow: <FaArrowDown19 />,
+      shield: <GoShieldCheck />,
+      year: "3-year",
       name: "Matthew Williamson",
       role: "Director of Strategic Equipment",
       country: "usa",
       location: "San Francisco, CA",
+      timezone: "pst",
       image:
-        "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80",
+        "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?auto=format&fit=crop&w=2070&q=80",
       status: "active",
       verified: true,
       company: "Tech Solutions Group",
     },
     {
-      id: 3, num: '8.7 5/3', shield: <GoShieldCheck />, safe: 'Safe touse', user: <FaUser />, one: '1da +e-jno',
+      id: 3,
+      num: "8.7 5/3",
+      shield: <GoShieldCheck />,
+      safe: "Safe to use",
+      one: "1da +e-jno",
       name: "Sarah Johnson",
       role: "Senior Marketing Executive",
       country: "uk",
       location: "London, UK",
+      timezone: "gmt",
       image:
-        "https://images.unsplash.com/photo-1494790108377-be9c29b29330?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1887&q=80",
+        "https://images.unsplash.com/photo-1494790108377-be9c29b29330?auto=format&fit=crop&w=1887&q=80",
       status: "pending",
       verified: false,
       company: "Global Marketing Partners",
     },
     {
-      id: 4, tick: <TiTick />, avail: 'available now', shield: <GoShieldCheck />, safe: 'safe touse',
+      id: 4,
+      tick: <TiTick />,
+      avail: "available now",
+      shield: <GoShieldCheck />,
+      safe: "safe to use",
       name: "Michael Chen",
       role: "Software Engineering Lead",
       country: "canada",
       location: "Toronto, Canada",
+      timezone: "est",
       image:
-        "https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1887&q=80",
+        "https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?auto=format&fit=crop&w=1887&q=80",
       status: "active",
       verified: true,
       company: "Tech Innovations Inc.",
@@ -76,35 +92,53 @@ export default function AccountHome() {
       role: "Financial Analyst",
       country: "australia",
       location: "Sydney, Australia",
+      timezone: "aest",
       image:
-        "https://images.unsplash.com/photo-1487412720507-e7ab37603c6f?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2071&q=80",
+        "https://images.unsplash.com/photo-1487412720507-e7ab37603c6f?auto=format&fit=crop&w=2071&q=80",
       status: "inactive",
       verified: true,
       company: "Global Finance Corp",
-      icon: <CiHeart />, safe: 'Safe touse', tick: <TiTick />, plus: ' + safet..sav', shield: <GoShieldCheck />
+      heart: <CiHeart />,
+      safe: "Safe to use",
+      tick: <TiTick />,
+      plus: " + safet..sav",
+      shield: <GoShieldCheck />,
     },
   ]);
 
   // Filter states
   const [searchTerm, setSearchTerm] = useState("");
   const [countryFilter, setCountryFilter] = useState("");
-  const [genderFilter, setGenderFilter] = useState("");
+  const [timezoneFilter, setTimezoneFilter] = useState("");
   const [statusFilter, setStatusFilter] = useState("");
-  const [dateFilter, setDateFilter] = useState("");
+  const [verifiedOnly, setVerifiedOnly] = useState(false);
 
-  // Filter function
-  const filteredAccounts = accounts.filter((account) => {
-    return (
-      account.name.toLowerCase().includes(searchTerm.toLowerCase()) &&
-      (countryFilter === "" ||
-        account.country === countryFilter.toLowerCase()) &&
-      (statusFilter === "" || account.status === statusFilter.toLowerCase())
-    );
-  });
+  // Filtering logic
+  const filteredAccounts = accounts
+    .filter((account) => {
+      return (
+        account.name.toLowerCase().includes(searchTerm.toLowerCase()) &&
+        (countryFilter === "" ||
+          account.country === countryFilter.toLowerCase()) &&
+        (timezoneFilter === "" ||
+          account.timezone === timezoneFilter.toLowerCase()) &&
+        (statusFilter === "" ||
+          account.status === statusFilter.toLowerCase()) &&
+        (!verifiedOnly || account.verified)
+      );
+    })
+    .sort((a, b) => {
+      if (statusFilter === "alphabet") {
+        return a.name.localeCompare(b.name);
+      } else if (statusFilter === "date") {
+        return a.id - b.id;
+      }
+      return 0;
+    });
 
   return (
     <div className="absolute right-0 top-0 py-4 w-full md:w-[78%] mx-auto bg-gray-50 min-h-screen">
-      <div className=" absolute top-5 cursor-pointer right-10 bg-white shadow shadow-gray-500 p-2 rounded-[50%]">
+      <div className="absolute top-5 cursor-pointer right-10 bg-white shadow shadow-gray-500 p-2 rounded-[50%]">
         <FaUser />
       </div>
       <div className="px-4 sm:px-6">
@@ -114,9 +148,10 @@ export default function AccountHome() {
         <hr className="h-1 w-full text-blue-400 mb-6" />
 
         {/* Filter Section */}
-        <div className="bg-white rounded-md shadow-lg w-full shadow-gray-200 mb-8">
-          <div className=" flex flex-wrap gap-2">
-            <div className="relative w-full sm:w-auto sm:flex-1 min-w-[100px]">
+        <div className="bg-white rounded-md shadow-lg w-full shadow-gray-200 mb-5 p-4">
+          <div className="flex flex-wrap gap-3">
+            {/* Search */}
+            <div className="relative flex-1 min-w-[200px]">
               <FaSearch className="absolute left-3 top-1/2 transform -translate-y-1/2 text-blue-500" />
               <input
                 type="text"
@@ -127,8 +162,8 @@ export default function AccountHome() {
               />
             </div>
 
-            {/* industry Dropdown */}
-            <div className="relative w-full sm:w-auto min-w-[200px]">
+            {/* Industry Dropdown (country) */}
+            <div className="relative min-w-[200px]">
               <IoLocation className="absolute left-3 top-1/2 transform -translate-y-1/2 text-blue-500" />
               <select
                 value={countryFilter}
@@ -143,61 +178,83 @@ export default function AccountHome() {
               </select>
               <FaChevronDown className="absolute right-3 top-1/2 transform -translate-y-1/2 text-blue-500 pointer-events-none" />
             </div>
-            {/* anytime zone Dropdown */}
-            <div className="relative w-full sm:w-auto min-w-[200px]">
+
+            {/* Timezone Dropdown */}
+            <div className="relative min-w-[200px]">
               <IoLocation className="absolute left-3 top-1/2 transform -translate-y-1/2 text-blue-500" />
               <select
-                value={countryFilter}
-                onChange={(e) => setCountryFilter(e.target.value)}
+                value={timezoneFilter}
+                onChange={(e) => setTimezoneFilter(e.target.value)}
                 className="w-full appearance-none pl-10 pr-8 py-2 border border-blue-300 rounded-md focus:outline-none focus:ring-2 text-gray-700 focus:ring-blue-500 bg-white"
               >
                 <option value="">Any Timezone</option>
-                <option value="active">UK</option>
-                <option value="inactive">London</option>
-                <option value="pending">Australia</option>
+                <option value="est">EST</option>
+                <option value="pst">PST</option>
+                <option value="gmt">GMT</option>
+                <option value="aest">AEST</option>
               </select>
               <FaChevronDown className="absolute right-3 top-1/2 transform -translate-y-1/2 text-blue-500 pointer-events-none" />
             </div>
 
-            {/* sort Filter */}
-            <div className="relative w-full sm:w-auto  min-w-[180px]">
+            {/* Sort Dropdown */}
+            <div className="relative min-w-[180px]">
               <select
                 value={statusFilter}
                 onChange={(e) => setStatusFilter(e.target.value)}
                 className="w-full appearance-none pl-3 pr-8 py-2 border border-blue-300 rounded-md focus:outline-none text-gray-700 focus:ring-2 focus:ring-blue-500 bg-white"
               >
                 <option value="">Sort By</option>
-                <option value="active">Alphabet</option>
-                <option value="inactive">Number</option>
-                <option value="pending">Date</option>
+                <option value="alphabet">Alphabet</option>
+                <option value="date">Date</option>
               </select>
               <FaChevronDown className="absolute right-3 top-1/2 transform -translate-y-1/2 text-blue-500 pointer-events-none" />
             </div>
           </div>
-          <div className="flex justify-content-around flex-wrap  sm:flex-row items-start sm:items-center gap-3 p-4 bg-white mt-5 shadow shadow-gray-300 rounded-lg w-full">
-            <div className="sm:min-w-[150px] flex gap-2">
-              <span>Filter:</span>
-              <span>Industry</span>
-            </div>
-            <div className="sm:min-w-[200px] flex justify-center gap-2">
-              <span>Country</span>
-              <span>Timezone</span>
-            </div>
-            <div className="sm:min-w-[250px] flex justify-end items-center gap-2">
-              <span>Profile age</span>
-              <span><FaCaretDown /></span>
-            </div>
-            <div className="sm:min-w-[250px] flex justify-end items-center gap-2">
-              <span>Verfied Only</span>
-              <div className=" rounded-xl bg-blue-700 w-[40px]">
-                <span><FaCircle className="text-white " /></span>
-              </div>
-            </div>
+        </div>
+        {/* Extra Filter Row */}
+        <div className="flex flex-wrap items-center justify-between bg-white py-4 rounded-2xl px-7 mb-4 gap-4">
+          {/* Left side */}
+          <div className="flex gap-3 flex-wrap">
+            <h2 className="font-semibold text-gray-700">Filter :</h2>
+            <h2 className="cursor-pointer hover:text-blue-600">Industry</h2>
+          </div>
+
+          {/* Middle side */}
+          <div className="flex gap-3 flex-wrap">
+            <h2 className="cursor-pointer hover:text-blue-600">Country</h2>
+            <h2 className="cursor-pointer hover:text-blue-600">Time Zone</h2>
+          </div>
+
+          {/* Profile Age Dropdown */}
+          <div>
+            <select className="border border-gray-300 rounded-md px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500 text-gray-700">
+              <option value="">Profile Age</option>
+              <option value="18">18+</option>
+              <option value="25">25+</option>
+              <option value="30">30+</option>
+            </select>
+          </div>
+
+          {/* Verified Toggle */}
+          <div className="flex items-center gap-2">
+            <span className="text-gray-700">Verified Only</span>
+            <button
+              onClick={() => setVerifiedOnly(!verifiedOnly)}
+              className={`w-10 h-6 rounded-xl transition-colors ${
+                verifiedOnly ? "bg-blue-700" : "bg-gray-300"
+              }`}
+            >
+              <FaCircle
+                className={`text-white transform transition-transform ${
+                  verifiedOnly ? "translate-x-4" : "translate-x-0"
+                }`}
+              />
+            </button>
           </div>
         </div>
 
         {/* Profile Cards Grid */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-2 gap-6">
+        <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
           {filteredAccounts.map((account) => (
             <div
               key={account.id}
@@ -227,21 +284,39 @@ export default function AccountHome() {
                 {/* Top badge */}
                 <div className="absolute right-5 top-2">
                   <div className="rounded-3xl bg-[#8b82822b] px-2 py-1 flex gap-2 items-center justify-center">
-                    {account.heart && <span className="text-md text-blue-700">{account.heart}</span>}
-                    {account.safe && <span className="text-md text-green-600 truncate">{account.safe}</span>}
+                    {account.heart && (
+                      <span className="text-md text-blue-700">
+                        {account.heart}
+                      </span>
+                    )}
+                    {account.safe && (
+                      <span className="text-md text-green-600 truncate">
+                        {account.safe}
+                      </span>
+                    )}
                   </div>
                 </div>
 
                 {/* Name & Role */}
                 <div className="flex justify-between items-start mb-4">
                   <div className="max-w-[70%]">
-                    <h2 className="font-bold text-xl text-gray-800 truncate">{account.name}</h2>
-                    <p className="text-gray-600 text-sm truncate">{account.role}</p>
+                    <h2 className="font-bold text-xl text-gray-800 truncate">
+                      {account.name}
+                    </h2>
+                    <p className="text-gray-600 text-sm truncate">
+                      {account.role}
+                    </p>
                   </div>
                   {(account.tick || account.plus) && (
                     <div className="bg-[#8b82822b] flex justify-center items-center p-2 rounded-md text-xs">
-                      {account.tick && <span className="rounded-full text-white bg-green-700">{account.tick}</span>}
-                      {account.plus && <span className="truncate">{account.plus}</span>}
+                      {account.tick && (
+                        <span className="rounded-full text-white bg-green-700">
+                          {account.tick}
+                        </span>
+                      )}
+                      {account.plus && (
+                        <span className="truncate">{account.plus}</span>
+                      )}
                     </div>
                   )}
                 </div>
@@ -253,22 +328,32 @@ export default function AccountHome() {
                       <IoLocation className="text-blue-500 mr-2" />
                       <span className="truncate">{account.location}</span>
                     </p>
-                    {(account.shield || account.year || account.arow && account.safe) && (
+                    {(account.shield || account.year || account.arow) && (
                       <p className="flex items-center gap-2 truncate">
-                        {account.shield} {account.year} {account.arow} {account?.safe}
+                        {account.shield} {account.year} {account.arow}{" "}
+                        {account?.safe}
                       </p>
                     )}
                   </div>
-                  <p className="text-sm text-gray-500 truncate">{account.company}</p>
+                  <p className="text-sm text-gray-500 truncate">
+                    {account.company}
+                  </p>
                 </div>
 
                 {/* Extra Properties */}
                 <div className="grid grid-cols-2 gap-2 text-xs text-gray-700 mb-4">
-                  {account.num && <span className="truncate">Score: {account.num}</span>}
-                  {account.warm && <span className="truncate">Status: {account.warm}</span>}
-                  {account.avail && <span className="truncate">{account.avail}</span>}
-                  {account.one && <span className="truncate">Note: {account.one}</span>}
-                  {account.user && <span className="flex items-center gap-1">{account.user} User</span>}
+                  {account.num && (
+                    <span className="truncate">Score: {account.num}</span>
+                  )}
+                  {account.warm && (
+                    <span className="truncate">Status: {account.warm}</span>
+                  )}
+                  {account.avail && (
+                    <span className="truncate">{account.avail}</span>
+                  )}
+                  {account.one && (
+                    <span className="truncate">Note: {account.one}</span>
+                  )}
                 </div>
 
                 {/* Buttons */}
@@ -284,7 +369,6 @@ export default function AccountHome() {
             </div>
           ))}
         </div>
-
 
         {/* Empty State */}
         {filteredAccounts.length === 0 && (

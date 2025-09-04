@@ -1,202 +1,90 @@
-import { useState, useEffect } from 'react';
 import {
-  FaSearch,
-  FaPills,
-  FaQuestionCircle,
-  FaFireAlt,
-  FaCog,
-  FaBars,
-  FaTimes,
-  FaChevronLeft,
-  FaChevronRight,
+  FaTachometerAlt,
+  FaUser,
+  FaGraduationCap,
+  FaLifeRing,
+  FaList,
   FaGlobe,
-} from 'react-icons/fa';
-import { NavLink } from 'react-router-dom';
-import { FaFlagUsa, FaFlag } from 'react-icons/fa';
+  FaClock,
+  FaCheckCircle,
+  FaUsers,
+  FaTimes,
+} from "react-icons/fa";
+import { MdWork } from "react-icons/md";
+import { IoMdMenu } from "react-icons/io";
+import { NavLink } from "react-router-dom";
 
-export default function SideBar() {
-  const [isCollapsed, setIsCollapsed] = useState(false);
-  const [isMobileOpen, setIsMobileOpen] = useState(false);
-  const [windowWidth, setWindowWidth] = useState(
-    typeof window !== 'undefined' ? window.innerWidth : 1024
-  );
-
-  const [language, setLanguage] = useState(() => {
-    if (typeof window !== 'undefined') {
-      return localStorage.getItem('appLanguage') || 'en';
-    }
-    return 'en';
-  });
-
-  const menu = [
-    { icon: <FaSearch />, label: 'Search', to: '/search' },
-    { icon: <FaPills />, label: 'Accounts', to: '/accounts' },
-    { icon: <FaPills />, label: 'Billing', to: '/billings' },
-    { icon: <FaQuestionCircle />, label: 'FAQs', to: '/faqs' },
-    { icon: <FaFireAlt />, label: 'Academy', to: '/academy' },
-    { icon: <FaCog />, label: 'Settings', to: '/settings' },
+export default function SideBar({ isMobile, onClose }) {
+  const mainMenu = [
+    { label: "Dashboard", icon: <FaTachometerAlt />, to: "/" },
+    { label: "Browse Profiles", icon: <FaUser />, to: "/profiles" },
+    { label: "My Hires", icon: <MdWork />, to: "/hires" },
+    { label: "Academy", icon: <FaGraduationCap />, to: "/academy" },
+    { label: "Support", icon: <FaLifeRing />, to: "/support" },
   ];
 
-  const languages = {
-    en: {
-      code: 'en',
-      name: 'English',
-      icon: <FaFlagUsa className="text-black group-hover:text-white" />
-    },
-    fr: {
-      code: 'fr',
-      name: 'Français',
-      icon: <FaFlag className="text-green-600" />
-    },
+  const filterMenu = [
+    { label: "Industry", icon: <IoMdMenu /> },
+    { label: "Country", icon: <FaGlobe /> },
+    { label: "Timezone", icon: <FaClock /> },
+    { label: "Profile Age", icon: <FaUsers /> },
+    { label: "Verified Only", icon: <FaCheckCircle /> },
+    { label: "5+", icon: <FaList /> },
+  ];
+
+  const handleClick = () => {
+    if (isMobile) onClose();
   };
-
-  useEffect(() => {
-    const handleResize = () => {
-      setWindowWidth(window.innerWidth);
-      if (window.innerWidth >= 1024) setIsMobileOpen(false);
-    };
-    window.addEventListener('resize', handleResize);
-    return () => window.removeEventListener('resize', handleResize);
-  }, []);
-
-  useEffect(() => {
-    if (typeof window !== 'undefined') {
-      localStorage.setItem('appLanguage', language);
-    }
-  }, [language]);
-
-  const toggleSidebar = () => setIsCollapsed(!isCollapsed);
-  const toggleMobileMenu = () => setIsMobileOpen(!isMobileOpen);
-
-  const toggleLanguage = () => {
-    const languageCodes = Object.keys(languages);
-    const currentIndex = languageCodes.indexOf(language);
-    const nextIndex = (currentIndex + 1) % languageCodes.length;
-    setLanguage(languageCodes[nextIndex]);
-  };
-
-  const isMobile = windowWidth < 768;
-  const isTablet = windowWidth >= 768 && windowWidth < 1024;
-  const isDesktop = windowWidth >= 1024;
-
-  let sidebarWidth = 'w-64';
-  if (isMobile) {
-    sidebarWidth = 'w-[70%]';
-  } else if (isTablet) {
-    sidebarWidth = 'w-2/5';
-  } else if (isDesktop) {
-    sidebarWidth = isCollapsed ? 'w-20' : 'w-64';
-  }
-
-  const sidebarPosition = isDesktop
-    ? 'left-0'
-    : isMobileOpen
-      ? 'left-0'
-      : '-left-full';
 
   return (
-    <>
-      {/* Toggle Button for Mobile/Tablet */}
-      {(isMobile || isTablet) && (
-        <div className="fixed top-4 left-4 z-50">
-          <button
-            onClick={toggleMobileMenu}
-            className="p-2 bg-white text-black rounded-md shadow hover:bg-gray-200"
-            aria-label={isMobileOpen ? 'Close menu' : 'Open menu'}
-          >
-            {isMobileOpen ? <FaTimes size={22} /> : <FaBars size={22} />}
+    <div className="flex flex-col justify-between h-full">
+      {/* Header */}
+      <div className="flex items-center justify-between px-6 py-4 border-b">
+        <div className="flex items-center gap-2">
+          <div className="text-purple-600 text-2xl font-bold">P</div>
+          <span className="text-lg font-semibold">ProfilePartner</span>
+        </div>
+        {isMobile && (
+          <button onClick={onClose} className="text-gray-700">
+            <FaTimes size={22} />
           </button>
-        </div>
-      )}
-
-      {/* Sidebar */}
-      <div
-        className={`fixed top-0 h-screen bg-white text-black shadow-lg z-40 transition-all duration-300 ease-in-out ${sidebarWidth} ${sidebarPosition} lg:relative lg:left-0 lg:flex`}
-      >
-        <div className="flex flex-col justify-between h-full w-full backdrop-blur bg-opacity-90 bg-white text-black">
-          {/* Top Section (Logo + Collapse) */}
-          <div className="pt-2">
-            {/* Logo */}
-            <div className="flex justify-center items-center py-4 border-b bg-black border-gray-700">
-              <img
-                src="/accountimage/logo.png"
-                alt="Logo"
-                className={`transition-all duration-300 text-black ${isCollapsed && isDesktop ? 'h-6' : 'h-10'}`}
-              />
-            </div>
-
-            {/* Collapse Toggle */}
-            {isDesktop && (
-              <div className="flex justify-end px-4 pt-1 pb-1">
-                <button
-                  onClick={toggleSidebar}
-                  className="text-black transition p-2 rounded-full hover:bg-gray-800"
-                  aria-label={isCollapsed ? 'Expand sidebar' : 'Collapse sidebar'}
-                >
-                  {isCollapsed ? <FaChevronRight /> : <FaChevronLeft />}
-                </button>
-              </div>
-            )}
-          </div>
-
-          {/* Bottom Section (Menu + Language Toggle) */}
-          <div className="flex flex-col justify-between h-full">
-            <nav className="px-2 pt-1 space-y-1">
-              {menu.map((item, index) => (
-                <NavLink
-                  key={index}
-                  to={item.to}
-                  className={({ isActive }) =>
-                    `flex items-center p-3 gap-3 rounded-md cursor-pointer group transition-all ${isCollapsed && isDesktop ? 'justify-center' : ''
-                    } ${isActive ? 'bg-gradient-to-r from-[#6EA9EB] to-[#C589F1] text-white' : ' hover:bg-gradient-to-r from-[#6EA9EB] to-[#C589F1] hover:text-white'}`
-                  }
-                  title={isCollapsed && isDesktop ? item.label : ''}
-                  aria-label={item.label}
-                >
-                  <span className={({ isActive }) => `${isActive ? 'text-white' : 'text-black'} text-xl text-black group-hover:text-white`}>
-                    {item.icon}
-                  </span>
-                  {(!isCollapsed || !isDesktop) && (
-                    <span className={({ isActive }) => `${isActive ? 'text-white' : 'text-black '} ml-4 text-base text-black `}>
-                      {item.label}
-                    </span>
-                  )}
-                </NavLink>
-              ))}
-            </nav>
-
-            {/* Language Toggle */}
-            <div className="px-2 pb-4">
-              <button
-                onClick={toggleLanguage}
-                className={`flex items-center group w-full p-3 hover:text-white rounded-md hover:bg-gradient-to-r from-[#6EA9EB] to-[#C589F1] transition ${isCollapsed && isDesktop ? 'justify-center' : 'justify-between'
-                  }`}
-                aria-label={`Change language (current: ${languages[language].name})`}
-              >
-                <div className="flex items-center">
-                  <FaGlobe className="text-black group-hover:text-white mr-3 text-lg" />
-                  {(!isCollapsed || !isDesktop) && (
-                    <span className="text-black text-sm group-hover:text-white">
-                      {languages[language].name}
-                    </span>
-                  )}
-                </div>
-                <span className="text-xl group-hover:text-white">
-                  {languages[language].icon}
-                </span>
-              </button>
-            </div>
-          </div>
-        </div>
+        )}
       </div>
 
-      {/* Overlay */}
-      {(isMobile || isTablet) && isMobileOpen && (
-        <div
-          className="fixed inset-0 bg-[#00000080] bg-opacity-50 z-30"
-          onClick={toggleMobileMenu}
-        ></div>
-      )}
-    </>
+      {/* Navigation */}
+      <nav className="mt-4">
+        {mainMenu.map((item, index) => (
+          <NavLink
+            key={index}
+            to={item.to}
+            onClick={handleClick}
+            className={({ isActive }) =>
+              `flex items-center gap-3 mx-4 px-6 py-2 rounded-md transition ${
+                isActive
+                  ? "bg-gradient-to-r from-[#6EA9EB] to-[#C589F1] text-white font-medium"
+                  : "text-gray-700 hover:bg-gradient-to-r from-[#6EA9EB] to-[#C589F1] hover:text-white"
+              }`
+            }
+          >
+            <span className="text-md">{item.icon}</span>
+            <span>{item.label}</span>
+          </NavLink>
+        ))}
+      </nav>
+
+      {/* Filters */}
+      <div className="border-t py-4">
+        {filterMenu.map((item, index) => (
+          <div
+            key={index}
+            onClick={handleClick}
+            className="flex items-center gap-3 px-6 mx-4 py-2 text-gray-700 hover:bg-gradient-to-r from-[#6EA9EB] to-[#C589F1] hover:text-white rounded-md cursor-pointer"
+          >
+            <span className="text-md">{item.icon}</span>
+            <span>{item.label}</span>
+          </div>
+        ))}
+      </div>
+    </div>
   );
 }
